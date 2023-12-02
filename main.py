@@ -1,7 +1,5 @@
 from tkinter import *
 
-janela = Tk()
-
 configuration = {
     "title": "Cadastro de Pacientes",
     "geometry": "300x300",
@@ -29,10 +27,10 @@ configuration_w = {
 
 class Application():
     def __init__(self):
-        self.janela = janela
+        self.janela = Tk()
         self.tela()
         self.inputs()
-        janela.mainloop()
+        self.janela.mainloop()
 
     def tela(self):
         self.janela.title(configuration["title"])
@@ -134,6 +132,7 @@ class Application():
         self.botao_enviar = Button(self.janela2, bg="#E6E7DA", bd=3, text="Enviar", command=lambda: self.Enviar_dados(self.entry1, self.entry2, self.entry3, self.entry4, self.entry5, self.entry6, self.entry7))
         self.botao_enviar.place(relx=0.40, rely=0.90, width=100)
 
+
     def Enviar_dados(self, name, email, city, estado, number, cpf, relato):
         contador = 0
         lista = [name, email, city, estado, number, cpf, relato]
@@ -145,9 +144,6 @@ class Application():
                 print(f"{item} tem item")
                 if contador >= 7:
                     print("Enviar")
-
-
-
 
 
 Application()
