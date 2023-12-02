@@ -52,12 +52,19 @@ class Application():
         self.msg2.place(relx=configuration_w["Deseja Cadastrar um Cliente"][0],rely=configuration_w["Deseja Cadastrar um Cliente"][1])
 
         #self.bt_limpar = Button(self.frame_1, text="Apagar", bd=2, bg="#107db2", fg='white', font=('verdana', 8, 'bold'))
-        self.botao = Button(self.janela, text="Sim", bg=configuration_w["Botao"][2], bd=configuration_w["Botao"][3], font=("verdana", 8, "bold"), command=self.func_yes)
+        self.botao = Button(self.janela, text="Sim", bg=configuration_w["Botao"][2], bd=configuration_w["Botao"][3], font=("verdana", 8, "bold"), command=lambda: self.analisando(1))
         self.botao.place(relx=configuration_w["Botao"][0], rely=configuration_w["Botao"][1])
 
         #botão não!
-        self.botao_2 = Button(self.janela, text="Não", bg=configuration_w["Botao_2"][2], bd=configuration_w["Botao_2"][3], font=("verdana", 8, "bold"), command=self.func_no)
+        self.botao_2 = Button(self.janela, text="Não", bg=configuration_w["Botao_2"][2], bd=configuration_w["Botao_2"][3], font=("verdana", 8, "bold"), command=lambda: self.analisando(0))
         self.botao_2.place(relx=configuration_w["Botao_2"][0], rely=configuration_w["Botao_2"][1])
+
+    def analisando(self, arg):
+        if arg == 1:
+            self.janela.destroy()
+            self.Tela_2()
+        else:
+            self.janela.destroy()
 
     def Tela_2(self):
         self.janela2=Tk()
@@ -72,7 +79,6 @@ class Application():
         self.janela2.resizable(configuration_tela2["resizable"][0], configuration_tela2["resizable"][1])
         self.janela2.maxsize(configuration_tela2["maxsize"][0], configuration_tela2["maxsize"][1])
         self.janela2.minsize(configuration_tela2["minsize"][0], configuration_tela2["minsize"][1])
-
 
     def Complementos(self):
         #NOME DA PESSOA
@@ -125,14 +131,23 @@ class Application():
         self.entry7.place(relx=0.15, rely=0.62, height=134, width=350)
 
         #Botão para enviar
-        self.botao_enviar = Button(self.janela2, bg="#E6E7DA", bd=3, text="Enviar")
+        self.botao_enviar = Button(self.janela2, bg="#E6E7DA", bd=3, text="Enviar", command=lambda: self.Enviar_dados(self.entry1, self.entry2, self.entry3, self.entry4, self.entry5, self.entry6, self.entry7))
         self.botao_enviar.place(relx=0.40, rely=0.90, width=100)
-    def func_yes(self):
-        self.janela.destroy()
-        self.Tela_2()
 
-    def func_no(self):
-        self.janela.destroy()
+    def Enviar_dados(self, name, email, city, estado, number, cpf, relato):
+        contador = 0
+        lista = [name, email, city, estado, number, cpf, relato]
+        for item in lista:
+            if item.get() == "":
+                print(f"{item} vazio")
+            elif item.get() != "":
+                contador += 1
+                print(f"{item} tem item")
+                if contador >= 7:
+                    print("Enviar")
+
+
+
 
 
 Application()
