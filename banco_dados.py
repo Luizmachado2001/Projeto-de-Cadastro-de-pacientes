@@ -1,16 +1,12 @@
 import sqlite3
 
-conect = sqlite3.Connection("banco.db")
-
 class Dados():
     def __init__(self):
-        self.conect = conect
+        self.conect = sqlite3.Connection("banco.db")
         self.cur = self.conect.cursor()
         self.Created_Table()
         self.Create_Dados_table("Luiz albert dos santos machado", "luizmachado20010gmail.com", "aracaju", "sergipe", 79998622, "3213312", "paciente descreveu que estava sentindo dor de cabeça")
 
-    def created_dados(self):
-        self.conect = sqlite3.Connection("banco.db")
 
     def Created_Table(self):
         sql="""
@@ -45,5 +41,4 @@ class Dados():
             self.conect.commit()
 
 Dados()
-
 
