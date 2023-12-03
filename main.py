@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 configuration = {
     "title": "Cadastro de Pacientes",
@@ -125,7 +126,7 @@ class Application():
         self.label7 = Label(self.janela2, text="DIGITE RELATO DO PACIENTE", bg="#191919", foreground="#fff")
         self.label7.place(relx=0.35, rely=0.57)
 
-        self.entry7 = Entry(self.janela2, bd=3, bg="#E6E7DA")
+        self.entry7 = Text(self.janela2, bd=3, bg="#E6E7DA")
         self.entry7.place(relx=0.15, rely=0.62, height=134, width=350)
 
         #Botão para enviar
@@ -134,16 +135,28 @@ class Application():
 
 
     def Enviar_dados(self, name, email, city, estado, number, cpf, relato):
-        contador = 0
-        lista = [name, email, city, estado, number, cpf, relato]
+        info = {
+            "Atenção": ["Está com campos vazios!"],
+            "Atenção no relato": ["Está com mais caracteres que o limite permitido [10]"]
+        }
+        contador, limit = 0, 1
+        lista = [name.get(), email.get(), city.get(), estado.get(), number.get(), cpf.get()]
+        relato_value = relato.get("1.0", "end-1c")
+        lista.append(relato_value)
         for item in lista:
-            if item.get() == "":
-                print(f"{item} vazio")
-            elif item.get() != "":
+            if item == "":
+                if limit == 1:
+                    messagebox.showinfo(title="Atenção", message=info["Atenção"][0])
+                    limit-=1
+            elif item != "":
                 contador += 1
-                print(f"{item} tem item")
-                if contador >= 7:
+                if contador >= 7 and len(relato_value) <= 10:
                     print("Enviar")
+                else:
+                    messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
+
+
 
 
 Application()
+
