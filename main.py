@@ -152,7 +152,7 @@ class Application():
                 contador += 1
 
 
-        if contador >= 7 and len(relato_value) < 10:
+        if contador >= 7 and len(relato_value) <= 10:
             print("funcionou")
         else:
             messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
