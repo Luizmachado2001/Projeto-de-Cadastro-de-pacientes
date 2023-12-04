@@ -150,13 +150,12 @@ class Application():
                     limit-=1
             elif item != "":
                 contador += 1
-                if contador >= 7 and len(relato_value) <= 10:
-                    print("Enviar")
-                else:
-                    messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
 
 
+        if contador >= 7 and len(relato_value) < 10:
+            print("funcionou")
+        else:
+            messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
 
 
 Application()
-
