@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-import banco_dados as bd
+from banco_dados import Dados
 
 configuration = {
     "title": "Cadastro de Pacientes",
@@ -137,7 +137,7 @@ class Application():
     def Enviar_dados(self, name, email, city, estado, number, cpf, relato):
         info = {
             "Atenção": ["Está com campos vazios!"],
-            "Atenção no relato": ["Está com mais caracteres que o limite permitido [10]"]
+            "Atenção no relato": ["Está com mais caracteres que o limite permitido [20]"]
         }
         # contador que vai verificar se está com item dentro do argumento, se não estiver, não sobe o resultado.
         # O limite vai verificar se já mostrou a mensagem uma vez para evitar flood.
@@ -157,9 +157,11 @@ class Application():
                 contador += 1
 
         # Verifica se há pelo menos 7 campos preenchidos e se o comprimento do relato é menor ou igual a 10.
-        if contador >= 7 and len(lista[6]) <= 10:
+        if contador >= 7 and len(lista[6]) <= 20:
             print("Dados enviados com sucesso!")
-        elif len(lista[6]) in range(0, 10):
+            dados = Dados()
+            dados.Create_Dados_table(lista[0], lista[1], lista[2],lista[3], lista[4], lista[5], lista[6])
+        elif len(lista[6]) in range(0, 19):
             # Caso o comprimento do relato esteja na faixa de 0 a 10 caracteres.
             print("Comprimento do relato dentro da faixa permitida.")
         else:
