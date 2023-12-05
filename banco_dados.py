@@ -5,7 +5,6 @@ class Dados():
         self.conect = sqlite3.Connection("banco.db")
         self.cur = self.conect.cursor()
         self.Created_Table()
-        self.Create_Dados_table("Luiz albert dos santos machado", "luizmachado20010gmail.com", "aracaju", "sergipe", 79998622, "3213312", "paciente descreveu que estava sentindo dor de cabeça")
 
 
     def Created_Table(self):
@@ -17,7 +16,7 @@ class Dados():
         self.conect.commit()
 
     def verificando_name(self, name):
-        sql="""
+        sql = """
             SELECT NAME FROM DADOS
         """
         self.cur.execute(sql)
@@ -26,19 +25,18 @@ class Dados():
         for item in lista:
             if name in item:
                 return True
-            else:
-                return False
+        return False
 
-
-    def Create_Dados_table(self, name, email, city, estado, number, cpf, relato):
-        sql="""
+    def Create_Dados_table(self, name, email, city, estado, number, cpf, relato="none"):
+        sql = """
             INSERT INTO DADOS (name, email, city, estado, number, cpf, relato_paciente) VALUES (?,?,?,?,?,?,?)
         """
         if self.verificando_name(name):
-            print(f"[{name}] Esse nome já foi cadastrado")
+            print("name já foi cadastrado")
         else:
             self.cur.execute(sql, (name, email, city, estado, number, cpf, relato))
             self.conect.commit()
 
-Dados()
 
+
+Dados()
