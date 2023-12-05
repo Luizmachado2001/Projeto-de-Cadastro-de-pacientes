@@ -153,7 +153,9 @@ class Application():
 
 
         if contador >= 7 and len(relato_value) <= 10:
-            print("funcionou")
+            print("dados enviados com sucesso!")
+        elif len(relato_value) in range(0, 10):
+            print("")
         else:
             messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
 
