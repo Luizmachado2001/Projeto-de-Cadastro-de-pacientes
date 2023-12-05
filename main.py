@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import banco_dados as bd
 
 configuration = {
     "title": "Cadastro de Pacientes",
@@ -133,31 +134,39 @@ class Application():
         self.botao_enviar = Button(self.janela2, bg="#E6E7DA", bd=3, text="Enviar", command=lambda: self.Enviar_dados(self.entry1, self.entry2, self.entry3, self.entry4, self.entry5, self.entry6, self.entry7))
         self.botao_enviar.place(relx=0.40, rely=0.90, width=100)
 
-
     def Enviar_dados(self, name, email, city, estado, number, cpf, relato):
         info = {
             "Atenção": ["Está com campos vazios!"],
             "Atenção no relato": ["Está com mais caracteres que o limite permitido [10]"]
         }
+        # contador que vai verificar se está com item dentro do argumento, se não estiver, não sobe o resultado.
+        # O limite vai verificar se já mostrou a mensagem uma vez para evitar flood.
         contador, limit = 0, 1
-        lista = [name.get(), email.get(), city.get(), estado.get(), number.get(), cpf.get()]
-        relato_value = relato.get("1.0", "end-1c")
-        lista.append(relato_value)
+        # Vai transformar em uma lista com os valores dos entrys e text os argumentos passados pela função.
+        lista = [name.get(), email.get(), city.get(), estado.get(), number.get(), cpf.get(), relato.get("1.0", "end-1c")]
+        # Vai pegar o valor do text do começo a última caracter.
+
+
         for item in lista:
             if item == "":
+                # Verifica se o campo está vazio e se a mensagem já foi mostrada para evitar repetição.
                 if limit == 1:
                     messagebox.showinfo(title="Atenção", message=info["Atenção"][0])
-                    limit-=1
+                    limit -= 1
             elif item != "":
                 contador += 1
 
-
-        if contador >= 7 and len(relato_value) <= 10:
-            print("dados enviados com sucesso!")
-        elif len(relato_value) in range(0, 10):
-            print("")
+        # Verifica se há pelo menos 7 campos preenchidos e se o comprimento do relato é menor ou igual a 10.
+        if contador >= 7 and len(lista[6]) <= 10:
+            print("Dados enviados com sucesso!")
+        elif len(lista[6]) in range(0, 10):
+            # Caso o comprimento do relato esteja na faixa de 0 a 10 caracteres.
+            print("Comprimento do relato dentro da faixa permitida.")
         else:
+            # Caso contrário, mostra a mensagem de atenção no relato.
             messagebox.showinfo(title="Atenção no relato", message=info["Atenção no relato"][0])
 
 
+
 Application()
+
