@@ -1,5 +1,3 @@
-# Projeto-de-Cadastro-de-pacientes
-
 <h1>Projeto de Cadastro de Pacientes</h1>
 Este projeto consiste em um sistema de cadastro de pacientes com interface gráfica. A interface já está completamente desenvolvida, restando apenas a implementação da parte relacionada ao banco de dados.
 
