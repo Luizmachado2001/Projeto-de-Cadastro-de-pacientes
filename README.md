@@ -1,5 +1,5 @@
 <h1>Projeto de Cadastro de Pacientes</h1>
-Este projeto consiste em um sistema de cadastro de pacientes com interface gráfica. A interface já está completamente desenvolvida, restando apenas a implementação da parte relacionada ao banco de dados.
+<p>Este projeto consiste em um sistema de cadastro de pacientes com interface gráfica. A interface já está completamente desenvolvida, restando apenas a implementação da parte relacionada ao banco de dados.</p>
 
 Funcionalidades
 Ao abrir o sistema, o usuário será questionado se deseja cadastrar um novo paciente.
