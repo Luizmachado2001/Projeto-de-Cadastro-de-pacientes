@@ -11,4 +11,4 @@ class interface():
 
 
 
-interface("bom dia", "350x450", "black")
+interface("tela 1", "350x350", "black")
