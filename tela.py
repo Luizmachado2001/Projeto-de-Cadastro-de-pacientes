@@ -1,4 +1,5 @@
 from tkinter import Tk, Label, Button
+from tela2 import Tela_2
 
 
 configuration = {
@@ -36,7 +37,7 @@ class Tela:
     def analisando(self, arg):
         if arg == 1:
             self.janela.destroy()
-            self.Tela_2()
+            Tela_2()
         else:
             self.janela.destroy()
 
