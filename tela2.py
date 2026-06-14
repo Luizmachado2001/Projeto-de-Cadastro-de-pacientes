@@ -8,7 +8,6 @@ configuration_tela2 = {
 }
 
 from tkinter import Tk, Label, Button, Entry, Text, messagebox
-
 from banco_dados import Dados
 
 
@@ -105,7 +104,7 @@ class Tela_2:
         if contador >= 7 and len(lista[6]) <= 20:
             print("Dados enviados com sucesso!")
             dados = Dados()
-            dados.Create_Dados_table(lista[0], lista[1], lista[2],lista[3], lista[4], lista[5], lista[6])
+            dados.enviar_dados(lista[0], lista[1], lista[2],lista[3], lista[4], lista[5], lista[6])
         elif len(lista[6]) in range(0, 19):
             # Caso o comprimento do relato esteja na faixa de 0 a 10 caracteres.
             print("Comprimento do relato dentro da faixa permitida.")

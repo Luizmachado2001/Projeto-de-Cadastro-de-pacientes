@@ -1,7 +1,6 @@
 from tkinter import Tk, Label, Button
 from tela2 import Tela_2
 
-
 configuration = {
     "title": "Cadastro de Pacientes",
     "geometry": "300x300",
@@ -35,6 +34,7 @@ class Tela:
         self.janela.maxsize(configuration["maxsize"][0], configuration["maxsize"][1])
 
     def analisando(self, arg):
+        """Função para verificar se está fechar ou abrir a segunda tela!"""
         if arg == 1:
             self.janela.destroy()
             Tela_2()
