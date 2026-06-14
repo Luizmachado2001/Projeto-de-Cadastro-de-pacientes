@@ -1,5 +1,5 @@
 from tkinter import Tk, Label, Button
-from Tela2 import Tela_2
+from Telas.Tela2 import Tela2
 
 configuration = {
     "title": "Cadastro de Pacientes",
@@ -37,7 +37,7 @@ class Tela:
         """Função para verificar se está fechar ou abrir a segunda tela!"""
         if arg == 1:
             self.janela.destroy()
-            Tela_2()
+            Tela2()
         else:
             self.janela.destroy()
 

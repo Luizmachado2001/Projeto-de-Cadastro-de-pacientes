@@ -10,7 +10,7 @@ configuration_tela2 = {
     "maxsize": [527,  587]
 }
 
-class Tela_2:
+class Tela2:
     def __init__(self):
         self.janela=Tk()
         self.Complementos()
