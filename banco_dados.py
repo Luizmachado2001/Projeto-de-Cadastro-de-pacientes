@@ -1,6 +1,11 @@
 import sqlite3
 
 class Dados:
+    """
+        Classe responsável pela comunicação com o banco de dados SQLite.
+        Gerencia criação de tabelas, verificação e inserção de pacientes.
+    """
+
     def __init__(self):
         self.connect = sqlite3.Connection("banco.db")
         self.cur = self.connect.cursor()
