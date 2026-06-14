@@ -1,3 +1,6 @@
+from tkinter import Tk, Label, Button, Entry, Text, messagebox
+from Database.Dados import Dados
+
 configuration_tela2 = {
     "title": "Área de Cadastro dos Pacientes",
     "geometry": "527x587",
@@ -6,10 +9,6 @@ configuration_tela2 = {
     "minsize": [527, 587],
     "maxsize": [527,  587]
 }
-
-from tkinter import Tk, Label, Button, Entry, Text, messagebox
-from banco_dados import Dados
-
 
 class Tela_2:
     def __init__(self):

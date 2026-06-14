@@ -1,4 +1,4 @@
-from tela import Tela
+from Telas.Tela import Tela
 
 #Atualizado
 

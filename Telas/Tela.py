@@ -1,5 +1,5 @@
 from tkinter import Tk, Label, Button
-from tela2 import Tela_2
+from Tela2 import Tela_2
 
 configuration = {
     "title": "Cadastro de Pacientes",
